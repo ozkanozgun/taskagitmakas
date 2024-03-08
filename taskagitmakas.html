@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taş Kağıt Makas Oyunu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .game-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .game-buttons button {
+    padding: 10px 20px;
+    font-size: 48px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="game-buttons">
+  <button onclick="tasKagitMakas('taş')"><i class="fas fa-hand-rock"></i></button>
+  <button onclick="tasKagitMakas('kağıt')"><i class="fas fa-hand-paper"></i></button>
+  <button onclick="tasKagitMakas('makas')"><i class="fas fa-hand-scissors"></i></button>
+</div>
+
+<script>
+  function tasKagitMakas(kullaniciSecimi) {
+    let bilgisayarSecimi = Math.floor(Math.random() * 3); // 0: taş, 1: kağıt, 2: makas
+    let bilgisayarSecimiMetin;
+
+    if (bilgisayarSecimi === 0) {
+      bilgisayarSecimiMetin = "taş";
+    } else if (bilgisayarSecimi === 1) {
+      bilgisayarSecimiMetin = "kağıt";
+    } else {
+      bilgisayarSecimiMetin = "makas";
+    }
+
+    let sonuc;
+    if (
+      (kullaniciSecimi === "taş" && bilgisayarSecimi === 2) ||
+      (kullaniciSecimi === "kağıt" && bilgisayarSecimi === 0) ||
+      (kullaniciSecimi === "makas" && bilgisayarSecimi === 1)
+    ) {
+      sonuc = "Kazandın!";
+    } else if (kullaniciSecimi === bilgisayarSecimiMetin) {
+      sonuc = "Beraberlik!";
+    } else {
+      sonuc = "Kaybettin!";
+    }
+
+    alert("Senin seçimin: " + kullaniciSecimi + ". Bilgisayarın seçimi: " + bilgisayarSecimiMetin + ". Sonuç: " + sonuc);
+  }
+</script>
+
+</body>
+</html>
